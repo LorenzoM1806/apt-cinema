@@ -16,5 +16,4 @@ public class VisitorRequest {
     private String name;
     private String email;
     private String phone;
-    private List<String> resevations;
 }

@@ -29,7 +29,6 @@ public class VisitorService {
                 .name(visitor.getName())
                 .email(visitor.getEmail())
                 .phone(visitor.getPhone())
-                .resevations(visitor.getResevations())
                 .build();
     }
 
@@ -39,7 +38,6 @@ public class VisitorService {
                 .name(visitorRequest.getName())
                 .email(visitorRequest.getEmail())
                 .phone(visitorRequest.getPhone())
-                .resevations(visitorRequest.getResevations())
                 .build();
         visitorRepository.save(visitor);
     }

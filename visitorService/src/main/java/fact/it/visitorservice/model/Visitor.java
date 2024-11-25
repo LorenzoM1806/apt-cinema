@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Document(value = "bezoeker")
+@Document(value = "visitor")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -19,5 +19,4 @@ public class Visitor {
     private String name;
     private String email;
     private String phone;
-    private List<String> resevations;
 }
