@@ -1,0 +1,17 @@
+package fact.it.auditoriumservice.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class AuditoriumResponse {
+    private Long id;
+    private String codeId;
+    private Integer auditoriumNumber;
+    private Integer auditoriumType;
+}
