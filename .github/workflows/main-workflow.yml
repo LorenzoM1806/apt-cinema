@@ -18,7 +18,7 @@ jobs:
           distribution: adopt
 
       - name: Build, test and package project
-        working-directory: ./movie-service
+        working-directory: ./movieService
         run: mvn package -B
 
       - name: Docker login
@@ -44,7 +44,7 @@ jobs:
           distribution: adopt
 
       - name: Build, test and package project
-        working-directory: ./visitor-service
+        working-directory: ./visitorService
         run: mvn package -B
 
       - name: Docker login
@@ -70,7 +70,7 @@ jobs:
           distribution: adopt
 
       - name: Build, test and package project
-        working-directory: ./auditorium-service
+        working-directory: ./auditoriumService
         run: mvn package -B
 
       - name: Docker login
@@ -96,7 +96,7 @@ jobs:
           distribution: adopt
 
       - name: Build, test and package project
-        working-directory: ./reservation-service
+        working-directory: ./reservationService
         run: mvn package -B
 
       - name: Docker login
