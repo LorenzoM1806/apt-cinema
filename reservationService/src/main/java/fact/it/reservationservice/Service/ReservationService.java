@@ -34,68 +34,28 @@ public class ReservationService {
         private String movieServiceBaseUrl;
 
         public boolean makeReservation(ReservationRequest reservationRequest) {
-                Reservation reservation = new Reservation();
-                reservation.setCodeId(UUID.randomUUID().toString());
+                // Check if the reservationItemDtoList is null or empty
+                if (reservationRequest == null || reservationRequest.getReservationItemDtoList() == null || reservationRequest.getReservationItemDtoList().isEmpty()) {
+                        System.out.println("No reservation items provided");
+                        return false;  // Handle the case when no items are provided
+                }
 
+                // Proceed with the reservation logic if the list is valid
                 List<ReservationItem> reservationItems = reservationRequest.getReservationItemDtoList()
                         .stream()
-                        .map(this::mapToReservationItem)
-                        .toList();
+                        .map(this::mapToReservationItem)  // Mapping each DTO to ReservationItem
+                        .collect(Collectors.toList());
 
+                // Create and save the reservation entity
+                Reservation reservation = new Reservation();
+                reservation.setCodeId(UUID.randomUUID().toString()); // Or generate your own ID
                 reservation.setReservationItemsList(reservationItems);
 
-                List<String> codeIds = reservation.getReservationItemsList().stream()
-                        .map(ReservationItem::getCodeId)
-                        .toList();
-
-                //Fetch responses
-                AuditoriumResponse[] auditoriumResponseArray = webClient.get()
-                        .uri("http://" + auditoriumServiceBaseUrl + "/api/auditorium",
-                                uriBuilder -> uriBuilder.queryParam("codeId", codeIds).build())
-                        .retrieve()
-                        .bodyToMono(AuditoriumResponse[].class)
-                        .block();
-
-                MovieResponse[] movieResponseArray = webClient.get()
-                        .uri("http://" + movieServiceBaseUrl + "/api/movie",
-                                uriBuilder -> uriBuilder.queryParam("codeId", codeIds).build())
-                        .retrieve()
-                        .bodyToMono(MovieResponse[].class)
-                        .block();
-
-                VisitorResponse[] visitorResponseArray = webClient.get()
-                        .uri("http://" + visitorServiceBaseUrl + "/api/visitor",
-                                uriBuilder -> uriBuilder.queryParam("codeId", codeIds).build())
-                        .retrieve()
-                        .bodyToMono(VisitorResponse[].class)
-                        .block();
-
-                //Map responses to ReservationItems
-                Map<String, AuditoriumResponse> auditoriumResponseMap = Arrays.stream(auditoriumResponseArray)
-                        .collect(Collectors.toMap(AuditoriumResponse::getCodeId, response -> response));
-
-                Map<String, MovieResponse> movieResponseMap = Arrays.stream(movieResponseArray)
-                        .collect(Collectors.toMap(MovieResponse::getCodeId, response -> response));
-
-                Map<String, VisitorResponse> visitorResponseMap = Arrays.stream(visitorResponseArray)
-                        .collect(Collectors.toMap(VisitorResponse::getCodeId, response -> response));
-
-
-                reservationItems.forEach(item -> {
-                        item.setAuditoriumNumber(
-                                auditoriumResponseMap.get(item.getAuditoriumNumber()).getAuditoriumNumber().toString());
-                        item.setMovieTitle(
-                                movieResponseMap.get(item.getMovieTitle()).getTitle().toString());
-                        item.setVisitorName(
-                                visitorResponseMap.get(item.getVisitorName()).getName());
-
-                });
-
+                // Save the reservation
                 reservationRepository.save(reservation);
 
                 return true;
         }
-
         public List<ReservationResponse> getAllReservations() {
                 List<Reservation> reservations = reservationRepository.findAll();
 
@@ -110,16 +70,14 @@ public class ReservationService {
         private ReservationItem mapToReservationItem(ReservationItemDto reservationItemDto) {
                 ReservationItem reservationItem = new ReservationItem();
                 reservationItem.setVisitorName(reservationItemDto.getVisitorName());
-                reservationItem.setAuditoriumNumber(reservationItemDto.getAuditoriumNumber());
                 reservationItem.setMovieTitle(reservationItemDto.getMovieTitle());
+                reservationItem.setAuditoriumNumber(reservationItemDto.getAuditoriumNumber());
                 return reservationItem;
         }
 
         private List<ReservationItemDto> mapToReservationItemsDto(List<ReservationItem> reservationItems) {
                 return reservationItems.stream()
                         .map(reservationItem -> new ReservationItemDto(
-                                reservationItem.getId(),
-                                reservationItem.getCodeId(),
                                 reservationItem.getVisitorName(),
                                 reservationItem.getMovieTitle(),
                                 reservationItem.getAuditoriumNumber()

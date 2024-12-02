@@ -8,8 +8,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ReservationItemDto {
-    private Long id;
-    private String codeId;
     private String visitorName;
     private String movieTitle;
     private String auditoriumNumber;
