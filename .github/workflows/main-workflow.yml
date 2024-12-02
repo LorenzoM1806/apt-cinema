@@ -5,7 +5,7 @@ on: push
 jobs:
   movieservice:
     runs-on: ubuntu-latest
-    name: Java 17 build, test, deliver movie-service container
+    name: Java 17 build, test, deliver movieService container
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
@@ -25,13 +25,13 @@ jobs:
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Docker Build
-        run: docker build -t ${{ secrets.DOCKER_USER }}/movie-service:latest ./movie-service
+        run: docker build -t ${{ secrets.DOCKER_USER }}/movieService:latest ./movieService
 
       - name: Upload container to Docker Hub with Push
-        run: docker push ${{ secrets.DOCKER_USER }}/movie-service:latest
+        run: docker push ${{ secrets.DOCKER_USER }}/movieService:latest
   visitorservice:
     runs-on: ubuntu-latest
-    name: Java 17 build, test, deliver visitor-service container
+    name: Java 17 build, test, deliver visitorService container
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
@@ -51,13 +51,13 @@ jobs:
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Docker Build
-        run: docker build -t ${{ secrets.DOCKER_USER }}/visitor-service:latest ./visitor-service
+        run: docker build -t ${{ secrets.DOCKER_USER }}/visitorService:latest ./visitorService
 
       - name: Upload container to Docker Hub with Push
-        run: docker push ${{ secrets.DOCKER_USER }}/visitor-service:latest
+        run: docker push ${{ secrets.DOCKER_USER }}/visitorService:latest
   auditoriumservice:
     runs-on: ubuntu-latest
-    name: Java 17 build, test, deliver auditorium-service container
+    name: Java 17 build, test, deliver auditoriumService container
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
@@ -77,13 +77,13 @@ jobs:
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Docker Build
-        run: docker build -t ${{ secrets.DOCKER_USER }}/auditorium-service:latest ./auditorium-service
+        run: docker build -t ${{ secrets.DOCKER_USER }}/auditoriumService:latest ./auditoriumService
 
       - name: Upload container to Docker Hub with Push
-        run: docker push ${{ secrets.DOCKER_USER }}/auditorium-service:latest 
+        run: docker push ${{ secrets.DOCKER_USER }}/auditoriumService:latest 
   reservationservice:
     runs-on: ubuntu-latest
-    name: Java 17 build, test, deliver reservation-service container
+    name: Java 17 build, test, deliver reservationService container
     steps:
       - name: Check out repository
         uses: actions/checkout@v3
@@ -103,7 +103,7 @@ jobs:
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Docker Build
-        run: docker build -t ${{ secrets.DOCKER_USER }}/reservation-service:latest ./reservation-service
+        run: docker build -t ${{ secrets.DOCKER_USER }}/reservationService:latest ./reservationService
 
       - name: Upload container to Docker Hub with Push
-        run: docker push ${{ secrets.DOCKER_USER }}/reservation-service:latest
+        run: docker push ${{ secrets.DOCKER_USER }}/reservationService:latest
