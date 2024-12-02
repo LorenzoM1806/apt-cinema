@@ -74,32 +74,32 @@ services:
       PRODUCT_SERVICE_BASEURL: product-service:8080
       ORDER_SERVICE_BASEURL: order-service:8081
 
-  movieService:
-    image: ${{ secrets.DOCKER_USER }}/movieService:latest
+  movie-service:
+    image: ${{ secrets.DOCKER_USER }}/movie-service:latest
     ports:
       - 8084:8084
     environment:
       DATABASE_HOST: mongo-products
       DATABASE_PORT: 27017
 
-  visitorService:
-    image: ${{ secrets.DOCKER_USER }}/visitorService:latest
+  visitor-service:
+    image: ${{ secrets.DOCKER_USER }}/visitor-service:latest
     ports:
       - 8085:8085
     environment:
       DATABASE_HOST: mongo-products
       DATABASE_PORT: 27017
 
-  auditoriumService:
-    image: ${{ secrets.DOCKER_USER }}/auditoriumService:latest
+  auditorium-service:
+    image: ${{ secrets.DOCKER_USER }}/auditorium-service:latest
     ports:
       - 8086:8086
     environment:
       DATABASE_HOST: mongo-products
       DATABASE_PORT: 27017
 
-  reservationService:
-    image: ${{ secrets.DOCKER_USER }}/reservationService:latest
+  reservation-service:
+    image: ${{ secrets.DOCKER_USER }}/reservation-service:latest
     ports:
       - 8087:8087
     environment:
