@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
-
+//Hallo dit is een test
 @Document(value = "visitor")
 @AllArgsConstructor
 @NoArgsConstructor
