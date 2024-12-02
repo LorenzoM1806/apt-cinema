@@ -1,0 +1,86 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENTID}
+            client-secret: ${GOOGLE_CLIENTSECRET}
+            scope: openid, profile, email
+      resourceserver:
+        jwt:
+          issuer-uri: https://accounts.google.com
+          jwk-set-uri: https://www.googleapis.com/oauth2/v3/certs
+  cloud:
+    gateway:
+      routes:
+        - id: movie-service
+          uri: http://${MOVIE_SERVICE_BASEURL:localhost:8081}
+          predicates:
+            - Path=/movies
+            - Method=GET
+          filters:
+            - SetPath=/api/movie/all
+        - id: movie-service
+          uri: http://${MOVIE_SERVICE_BASEURL:localhost:8081}
+          predicates:
+            - Path=/movies
+            - Method=POST
+          filters:
+            - SetPath=/api/movie
+        - id: visitor-service
+          uri: http://${VISITOR_SERVICE_BASEURL:localhost:8082}
+          predicates:
+            - Path=/visitors
+            - Method=GET
+          filters:
+            - SetPath=/api/visitor/all
+        - id: visitor-service
+          uri: http://${VISITOR_SERVICE_BASEURL:localhost:8082}
+          predicates:
+            - Path=/visitors
+            - Method=POST
+          filters:
+            - SetPath=/api/visitor
+        - id: auditorium-service
+          uri: http://${AUDITORIUM_SERVICE_BASEURL:localhost:8084}
+          predicates:
+            - Path=/auditoriums
+            - Method=GET
+          filters:
+            - SetPath=/api/auditorium/all
+        - id: auditorium-service
+          uri: http://${AUDITORIUM_SERVICE_BASEURL:localhost:8084}
+          predicates:
+            - Path=/auditoriums
+            - Method=POST
+          filters:
+            - SetPath=/api/auditorium
+        - id: auditorium-service
+          uri: http://${AUDITORIUM_SERVICE_BASEURL:localhost:8084}
+          predicates:
+            - Path=/auditoriums
+            - Method=PUT
+          filters:
+            - SetPath=/api/auditorium/:id
+        - id: reservation-service
+          uri: http://${RESERVATION_SERVICE_BASEURL:localhost:8083}
+          predicates:
+            - Path=/reservations
+            - Method=GET
+          filters:
+            - SetPath=/api/reservation/all
+        - id: reservation-service
+          uri: http://${RESERVATION_SERVICE_BASEURL:localhost:8083}
+          predicates:
+            - Path=/reservations
+            - Method=POST
+          filters:
+            - SetPath=/api/reservation
+        - id: reservation-service
+          uri: http://${RESERVATION_SERVICE_BASEURL:localhost:8083}
+          predicates:
+            - Path=/reservations
+            - Method=DELETE
+          filters:
+            - SetPath=/api/reservation/:id
