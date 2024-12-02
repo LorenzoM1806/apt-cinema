@@ -9,6 +9,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Auditorium {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -44,4 +44,14 @@ public class AuditoriumService {
                 .auditoriumType(auditorium.getAuditoriumType())
                 .build();
     }
+
+    public void createAuditorium(AuditoriumRequest auditoriumRequest){
+        Auditorium auditorium = Auditorium.builder()
+                .codeId(auditoriumRequest.getCodeId())
+                .auditoriumNumber(auditoriumRequest.getAuditoriumNumber())
+                .auditoriumType(auditoriumRequest.getAuditoriumType())
+                .build();
+
+        auditoriumRepository.save(auditorium);
+    }
 }

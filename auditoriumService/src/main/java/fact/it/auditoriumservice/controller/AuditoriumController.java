@@ -16,6 +16,12 @@ public class AuditoriumController {
 
     private final AuditoriumService auditoriumService;
 
+    @PostMapping
+    @ResponseStatus(HttpStatus.OK)
+    public void createAuditorium
+            (@RequestBody AuditoriumRequest auditoriumRequest) {
+        auditoriumService.createAuditorium(auditoriumRequest);
+    }
     @PutMapping
     @ResponseStatus(HttpStatus.OK)
     public void updateAuditorium
@@ -34,4 +40,6 @@ public class AuditoriumController {
     public List<AuditoriumResponse> getAllAuditoriums() {
         return auditoriumService.getAllAuditoriums();
     }
+
+
 }
