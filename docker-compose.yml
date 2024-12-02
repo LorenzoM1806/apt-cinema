@@ -32,6 +32,26 @@ services:
     environment:
       DATABASE_HOST: mysql-order
       DATABASE_PORT: 3308
+  
+  api-gateway:
+   depends_on:
+     - movie-service
+     - reservation-service
+     - visitor-servie
+     - auditorium-service
+   image: miverboven/ede-api-gateway
+   ports:
+     - 8085:8085
+   links:
+     - movie-service
+     - reservation-service
+     - visitor-servie
+     - auditorium-service
+   environment:
+     MOVIE_SERVICE_BASEURL: movie-service:8081
+     RESERVATION_SERVICE_BASEURL: reservation-service:8083
+     VISITOR_SERVICE_BASEURL: visitor-service:8082
+     AUDITORIUM_SERVICE_BASEURL: auditorium-service:8084
 
 volumes:
   mongodb_product_data:
