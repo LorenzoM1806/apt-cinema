@@ -16,5 +16,4 @@ public class MovieRequest {
     private String title;
     private int playtime;
     private String genre;
-    private List<String> playsInCinemaList;
 }
