@@ -19,5 +19,4 @@ public class Movie {
     private String title;
     private int playtime;
     private String genre;
-    private List<String> playsInCinemaList;
 }

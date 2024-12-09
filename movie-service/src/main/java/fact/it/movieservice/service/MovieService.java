@@ -20,7 +20,6 @@ public class MovieService {
                 .title(movieRequest.getTitle())
                 .playtime(movieRequest.getPlaytime())
                 .genre(movieRequest.getGenre())
-                .playsInCinemaList(movieRequest.getPlaysInCinemaList())
                 .build();
 
         movieRepository.save(movie);
@@ -45,7 +44,6 @@ public class MovieService {
                 .title(movie.getTitle())
                 .playtime(movie.getPlaytime())
                 .genre(movie.getGenre())
-                .playsInCinemaList(movie.getPlaysInCinemaList())
                 .build();
     }
 }
