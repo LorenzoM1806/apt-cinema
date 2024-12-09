@@ -1,91 +1,18 @@
 version: "3.8"
 
 services:
-  mongo-products:
-    image: mongo:latest
-    ports:
-      - 27017:27017
-    volumes:
-      - mongodb_product_data:/data/db
-
-  mysql-order:
-    image: mysql:latest
-    ports:
-      - 3306:3306
-    volumes:
-      - mysql_order_data:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: abc123
-
-  mysql-inventory:
-    image: mysql:latest
-    ports:
-      - 3307:3306
-    volumes:
-      - mysql_inventory_data:/var/lib/mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: abc123
-
-  product-service:
-    depends_on:
-      - mongo-products
-    image: ${{ secrets.DOCKER_USER }}/product-service:latest
-    ports:
-      - 8080:8080
-    environment:
-      MONGODB_PORT: 27017
-      MONGODB_HOST: mongo-products
-
-  inventory-service:
-    depends_on:
-      - mysql-inventory
-    image: ${{ secrets.DOCKER_USER }}/inventory-service:latest
-    ports:
-      - 8082:8082
-    environment:
-      MYSQL_DB_USERNAME: root
-      MYSQL_DB_PASSWORD: abc123
-      MYSQL_DB_HOST: mysql-inventory
-      MYSQL_DB_PORT: 3307
-
-  order-service:
-    depends_on:
-      - product-service
-      - inventory-service
-    image: ${{ secrets.DOCKER_USER }}/order-service:latest
-    ports:
-      - 8081:8081
-    environment:
-      PRODUCT_SERVICE_BASEURL: product-service:8080
-      INVENTORY_INFO_SERVICE_BASEURL: inventory-service:8082
-      MYSQL_DB_USERNAME: root
-      MYSQL_DB_PASSWORD: abc123
-      MYSQL_DB_HOST: mysql-order
-      MYSQL_DB_PORT: 3306
-
-  api-gateway:
-    depends_on:
-      - product-service
-      - order-service
-    image: ${{ secrets.DOCKER_USER }}/ede-api-gateway:latest
-    ports:
-      - 8083:8083
-    environment:
-      PRODUCT_SERVICE_BASEURL: product-service:8080
-      ORDER_SERVICE_BASEURL: order-service:8081
-
   movie-service:
     image: ${{ secrets.DOCKER_USER }}/movie-service:latest
     ports:
-      - 8084:8084
+      - 8081:8081
     environment:
       DATABASE_HOST: mongo-products
-      DATABASE_PORT: 27017
+      DATABASE_PORT: 27018
 
   visitor-service:
     image: ${{ secrets.DOCKER_USER }}/visitor-service:latest
     ports:
-      - 8085:8085
+      - 8082:8082
     environment:
       DATABASE_HOST: mongo-products
       DATABASE_PORT: 27017
@@ -93,18 +20,38 @@ services:
   auditorium-service:
     image: ${{ secrets.DOCKER_USER }}/auditorium-service:latest
     ports:
-      - 8086:8086
+      - 8084:8084
     environment:
-      DATABASE_HOST: mongo-products
-      DATABASE_PORT: 27017
+      DATABASE_HOST: mysql-inventory
+      DATABASE_PORT: 3307
 
   reservation-service:
     image: ${{ secrets.DOCKER_USER }}/reservation-service:latest
     ports:
-      - 8087:8087
+      - 8083:8083
     environment:
       DATABASE_HOST: mysql-order
-      DATABASE_PORT: 3306
+      DATABASE_PORT: 3308
+  
+  api-gateway:
+   depends_on:
+     - movie-service
+     - reservation-service
+     - visitor-servie
+     - auditorium-service
+   image: miverboven/ede-api-gateway
+   ports:
+     - 8085:8085
+   links:
+     - movie-service
+     - reservation-service
+     - visitor-servie
+     - auditorium-service
+   environment:
+     MOVIE_SERVICE_BASEURL: movie-service:8081
+     RESERVATION_SERVICE_BASEURL: reservation-service:8083
+     VISITOR_SERVICE_BASEURL: visitor-service:8082
+     AUDITORIUM_SERVICE_BASEURL: auditorium-service:8084
 
 volumes:
   mongodb_product_data:

@@ -18,8 +18,8 @@ jobs:
           distribution: adopt
 
       - name: Build, test and package project
-        working-directory: ./movieService
-        run: mvn package -B
+        working-directory: ./movie-service
+        run: mvn package -DskipTests -B
 
       - name: Docker login
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
@@ -44,8 +44,8 @@ jobs:
           distribution: adopt
 
       - name: Build, test and package project
-        working-directory: ./visitorService
-        run: mvn package -B
+        working-directory: ./visitor-service
+        run: mvn package -DskipTests -B
 
       - name: Docker login
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
@@ -70,8 +70,8 @@ jobs:
           distribution: adopt
 
       - name: Build, test and package project
-        working-directory: ./auditoriumService
-        run: mvn package -B
+        working-directory: ./auditorium-service
+        run: mvn package -DskipTests -B
 
       - name: Docker login
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
@@ -96,8 +96,8 @@ jobs:
           distribution: adopt
 
       - name: Build, test and package project
-        working-directory: ./reservationService
-        run: mvn package -B
+        working-directory: ./reservation-service
+        run: mvn package -DskipTests -B
 
       - name: Docker login
         run: docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASSWORD }}
