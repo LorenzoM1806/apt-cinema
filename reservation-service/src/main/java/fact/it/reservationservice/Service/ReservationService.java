@@ -11,10 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -56,6 +53,16 @@ public class ReservationService {
 
                 return true;
         }
+
+        public void deleteReservation(ReservationRequest reservationRequest){
+                List<String> reservationCodeIds = new ArrayList<>();
+                reservationCodeIds.add(reservationRequest.getReservationItemDtoList().stream().map(r -> r.getCodeId()).toString());
+                if(reservationRepository.findByCodeIdIn(reservationCodeIds).stream().findFirst().isPresent()) {
+                        Reservation reservation = reservationRepository.findByCodeIdIn(reservationCodeIds).stream().findFirst().get();
+                        reservationRepository.delete(reservation);
+                }
+
+        }
         public List<ReservationResponse> getAllReservations() {
                 List<Reservation> reservations = reservationRepository.findAll();
 
@@ -69,6 +76,7 @@ public class ReservationService {
 
         private ReservationItem mapToReservationItem(ReservationItemDto reservationItemDto) {
                 ReservationItem reservationItem = new ReservationItem();
+                reservationItem.setCodeId(reservationItemDto.getCodeId());
                 reservationItem.setVisitorName(reservationItemDto.getVisitorName());
                 reservationItem.setMovieTitle(reservationItemDto.getMovieTitle());
                 reservationItem.setAuditoriumNumber(reservationItemDto.getAuditoriumNumber());
@@ -78,6 +86,7 @@ public class ReservationService {
         private List<ReservationItemDto> mapToReservationItemsDto(List<ReservationItem> reservationItems) {
                 return reservationItems.stream()
                         .map(reservationItem -> new ReservationItemDto(
+                                reservationItem.getCodeId(),
                                 reservationItem.getVisitorName(),
                                 reservationItem.getMovieTitle(),
                                 reservationItem.getAuditoriumNumber()

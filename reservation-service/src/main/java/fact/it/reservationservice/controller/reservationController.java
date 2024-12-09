@@ -27,4 +27,11 @@ public class reservationController {
     @ResponseStatus(HttpStatus.OK)
     public  List<ReservationResponse> getAllReservations() {return reservationService.getAllReservations();}
 
+    @DeleteMapping
+    @ResponseStatus(HttpStatus.OK)
+    public void deleteReservation
+            (@RequestBody ReservationRequest reservationRequest) {
+        reservationService.deleteReservation(reservationRequest);
+    }
+
 }
