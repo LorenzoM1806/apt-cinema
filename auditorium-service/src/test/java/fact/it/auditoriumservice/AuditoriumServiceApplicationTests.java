@@ -89,8 +89,7 @@ public class AuditoriumServiceApplicationTests {
 
         verify(auditoriumRepository, times(1)).findByCodeIdIn(Arrays.asList(auditorium.getCodeId()));
     }
-
-        @Test
+    @Test
     public void testUpdateAuditorium() {
         // Arrange
         AuditoriumRequest auditoriumRequest = new AuditoriumRequest();
@@ -98,57 +97,40 @@ public class AuditoriumServiceApplicationTests {
         auditoriumRequest.setAuditoriumType(3);
         auditoriumRequest.setCodeId("13");
 
+        Auditorium auditorium = new Auditorium();
+        auditorium.setAuditoriumNumber(1);
+        auditorium.setAuditoriumType(3);
+        auditorium.setCodeId("13");
+
+        when(auditoriumRepository.save(any(Auditorium.class))).thenReturn(auditorium);
+        when(auditoriumRepository.findAll()).thenReturn(Arrays.asList(auditorium));
+
         // Act
-        //Create the new version and get it
         auditoriumService.createAuditorium(auditoriumRequest);
-        AuditoriumResponse auditorium_before_update = auditoriumService.getAllAuditoriums().get(0);
 
-        //Make the update
-        auditoriumRequest.setAuditoriumType(4);
-        auditoriumService.updateAuditorium(auditoriumRequest);
+        AuditoriumRequest auditoriumRequestUpdated = new AuditoriumRequest();
+        auditoriumRequestUpdated.setAuditoriumNumber(1);
+        auditoriumRequestUpdated.setAuditoriumType(4);
+        auditoriumRequestUpdated.setCodeId("13");
 
-        //Get the new version
-        AuditoriumResponse auditorium_after_update = auditoriumService.getAllAuditoriums().get(0);
+        Auditorium updatedAuditorium = new Auditorium();
+        updatedAuditorium.setAuditoriumNumber(1);
+        updatedAuditorium.setAuditoriumType(4);
+        updatedAuditorium.setCodeId("13");
 
-        //Assert
-        assertEquals(auditorium_before_update.getId(), auditorium_after_update.getId());
-        assertEquals(auditorium_before_update.getAuditoriumNumber(), auditorium_after_update.getAuditoriumNumber());
-        assertNotEquals(auditorium_before_update.getAuditoriumType(), auditorium_after_update.getAuditoriumType());
-        assertEquals(auditorium_before_update.getCodeId(), auditorium_after_update.getCodeId());
+        when(auditoriumRepository.findAll()).thenReturn(Arrays.asList(updatedAuditorium));
+
+        auditoriumService.updateAuditorium(auditoriumRequestUpdated);
+
+        List<AuditoriumResponse> auditoriumResponses = auditoriumService.getAllAuditoriums();
+
+        // Assert
+        assertEquals(1, auditoriumResponses.size());
+        assertEquals(1, auditoriumResponses.get(0).getAuditoriumNumber());
+        assertEquals(4, auditoriumResponses.get(0).getAuditoriumType());
+        assertEquals("13", auditoriumResponses.get(0).getCodeId());
+
+        verify(auditoriumRepository, times(1)).save(any(Auditorium.class));
+        verify(auditoriumRepository, times(1)).findAll();
     }
-//    @Test
-//    public void testUpdateAuditorium() {
-//        //Arrange
-//        Auditorium existingAuditorium = new Auditorium();
-//        existingAuditorium.setId(123456789L);
-//        existingAuditorium.setAuditoriumNumber(1);
-//        existingAuditorium.setAuditoriumType(3);
-//        existingAuditorium.setCodeId("13");
-//
-//        Auditorium updatedAuditorium = new Auditorium();
-//        updatedAuditorium.setId(123456789L);
-//        updatedAuditorium.setAuditoriumNumber(1);
-//        updatedAuditorium.setAuditoriumType(4);
-//        updatedAuditorium.setCodeId("13");
-//
-//        AuditoriumRequest auditoriumRequest = new AuditoriumRequest();
-//        auditoriumRequest.setAuditoriumNumber(1);
-//        auditoriumRequest.setAuditoriumType(4);
-//        auditoriumRequest.setCodeId("13");
-//
-//        when(auditoriumRepository.findById(123456789L)).thenReturn(Optional.of(existingAuditorium));
-//        when(auditoriumRepository.save(any(Auditorium.class))).thenReturn(updatedAuditorium);
-//
-//        // Act
-//        AuditoriumResponse result = auditoriumService.updateAuditorium(auditoriumRequest);
-//
-//        // Assert
-//        assertEquals(123456789L, result.getId());
-//        assertEquals("13", result.getCodeId());
-//        assertEquals(1, result.getAuditoriumNumber());
-//        assertEquals(4, result.getAuditoriumType());
-//
-//        verify(auditoriumRepository, times(1)).findById(123456789L);
-//        verify(auditoriumRepository, times(1)).save(any(Auditorium.class));
-//    }
 }
