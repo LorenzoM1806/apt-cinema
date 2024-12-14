@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -25,15 +26,30 @@ public class AuditoriumService {
         return movieList.stream().map(this::mapToAuditoriumResponse).toList();
     }
 
-    public void updateAuditorium(AuditoriumRequest auditoriumRequest){
+//    public void updateAuditorium(AuditoriumRequest auditoriumRequest){
+//        List<String> auditoriumCodeIds = new ArrayList<>();
+//        auditoriumCodeIds.add(auditoriumRequest.getCodeId());
+//        if(auditoriumRepository.findByCodeIdIn(auditoriumCodeIds).stream().findFirst().isPresent()) {
+//            Auditorium auditorium = auditoriumRepository.findByCodeIdIn(auditoriumCodeIds).stream().findFirst().get();
+//            auditorium.setAuditoriumNumber(auditoriumRequest.getAuditoriumNumber());
+//            auditorium.setAuditoriumType(auditoriumRequest.getAuditoriumType());
+//            auditoriumRepository.save(auditorium);
+//        }
+
+    public Auditorium updateAuditorium(AuditoriumRequest auditoriumRequest) {
         List<String> auditoriumCodeIds = new ArrayList<>();
         auditoriumCodeIds.add(auditoriumRequest.getCodeId());
-        if(auditoriumRepository.findByCodeIdIn(auditoriumCodeIds).stream().findFirst().isPresent()) {
-            Auditorium auditorium = auditoriumRepository.findByCodeIdIn(auditoriumCodeIds).stream().findFirst().get();
+
+        Optional<Auditorium> optionalAuditorium = auditoriumRepository.findByCodeIdIn(auditoriumCodeIds)
+                .stream()
+                .findFirst();
+        if (optionalAuditorium.isPresent()) {
+            Auditorium auditorium = optionalAuditorium.get();
             auditorium.setAuditoriumNumber(auditoriumRequest.getAuditoriumNumber());
             auditorium.setAuditoriumType(auditoriumRequest.getAuditoriumType());
-            auditoriumRepository.save(auditorium);
+            return auditoriumRepository.save(auditorium);
         }
+        return null;
     }
 
     private AuditoriumResponse mapToAuditoriumResponse(Auditorium auditorium) {
