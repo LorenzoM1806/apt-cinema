@@ -77,10 +77,10 @@ public class MovieServiceApplicationTests {
 		// First two letters of title, first two letters of genre + playtime
 		movie.setCodeId("JaHo124");
 
-		when(movieRepository.findByCodeIdIn(Arrays.asList("JaHo124"))).thenReturn(Arrays.asList(movie));
+		when(movieRepository.findByCodeIdIn("JaHo124")).thenReturn(Arrays.asList(movie));
 
 		// Act
-		List<MovieResponse> movies = movieService.getAllMoviesByCodeId(Arrays.asList("JaHo124"));
+		List<MovieResponse> movies = movieService.getAllMoviesByCodeId("JaHo124");
 
 		// Assert
 		assertEquals(1, movies.size());
@@ -90,6 +90,6 @@ public class MovieServiceApplicationTests {
 		assertEquals("Horror", movies.get(0).getGenre());
 		assertEquals(124, movies.get(0).getPlaytime());
 
-		verify(movieRepository, times(1)).findByCodeIdIn(Arrays.asList(movie.getCodeId()));
+		verify(movieRepository, times(1)).findByCodeIdIn(movie.getCodeId());
 	}
 }

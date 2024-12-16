@@ -26,7 +26,7 @@ public class MovieController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public List<MovieResponse> getAllMoviesByCodeId
-            (@RequestParam List<String> codeId) {
+            (String codeId) {
         return movieService.getAllMoviesByCodeId(codeId);
     }
 

@@ -31,7 +31,7 @@ public class MovieService {
         return movieList.stream().map(this::mapToMovieResponse).toList();
     }
 
-    public List<MovieResponse> getAllMoviesByCodeId(List<String> codeId) {
+    public List<MovieResponse> getAllMoviesByCodeId(String codeId) {
         List<Movie> movieList = movieRepository.findByCodeIdIn(codeId);
 
         return movieList.stream().map(this::mapToMovieResponse).toList();
