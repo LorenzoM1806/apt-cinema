@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b091d28d-846b-4718-9e49-91e0993b451a" name="Changes" comment="Added a docker file for the auditorium service" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dockerfile" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="main" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="main" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="2p1ofl01qYSfJ9cYwvnvSMAYzRi" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/jorri/Desktop/School 2024-2025/Semester 1/Advanced Programming Topics/apt-cinema/auditorium-service",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jorri\Desktop\School 2024-2025\Semester 1\Advanced Programming Topics\apt-cinema\auditoriumService\src\main\java\fact\it\auditoriumservice" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="AuditoriumServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="auditoriumService" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="fact.it.auditoriumservice.AuditoriumServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b091d28d-846b-4718-9e49-91e0993b451a" name="Changes" comment="" />
+      <created>1731943051949</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1731943051949</updated>
+      <workItem from="1731943052977" duration="2699000" />
+      <workItem from="1732008227135" duration="417000" />
+      <workItem from="1732099725403" duration="1000" />
+      <workItem from="1732107029248" duration="4000" />
+      <workItem from="1732201998190" duration="682000" />
+      <workItem from="1732540806271" duration="2958000" />
+      <workItem from="1732543960535" duration="1274000" />
+      <workItem from="1732545977481" duration="496000" />
+      <workItem from="1732546523246" duration="1736000" />
+      <workItem from="1733146869496" duration="1396000" />
+      <workItem from="1733753887662" duration="25000" />
+      <workItem from="1733753971213" duration="32000" />
+    </task>
+    <task id="LOCAL-00001" summary="Added a micro service for the auditorium">
+      <option name="closed" value="true" />
+      <created>1732543755606</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1732543755606</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added a micro service for the auditorium">
+      <option name="closed" value="true" />
+      <created>1732546546892</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1732546546892</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added a docker file for the auditorium service">
+      <option name="closed" value="true" />
+      <created>1733146931934</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1733146931934</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added a micro service for the auditorium" />
+    <MESSAGE value="Added a docker file for the auditorium service" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added a docker file for the auditorium service" />
+  </component>
+</project>

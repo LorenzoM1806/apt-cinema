@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ce0861a8-5dfe-4ff5-97dc-1450c2fc3a7c" name="Changes" comment="Created tests for the movie service functions. Also removed anything related to playsincinema as it is not being used." />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dockerfile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="filmBranch" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2p1k1ODnepWHYbYu9PSbCLLQ0aV" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/jorri/Desktop/School 2024-2025/Semester 1/Advanced Programming Topics/apt-cinema/movie-service",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jorri\Desktop\School 2024-2025\Semester 1\Advanced Programming Topics\ede-microservices-ex\movieService\src\main\java\fact\it\movieservice" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.MovieServiceApplicationTests.testGetAllMoviesByCodeId">
+    <configuration name="MovieServiceApplicationTests.testCreateMovie" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="movieService" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fact.it.movieservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fact.it.movieservice" />
+      <option name="MAIN_CLASS_NAME" value="fact.it.movieservice.MovieServiceApplicationTests" />
+      <option name="METHOD_NAME" value="testCreateMovie" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MovieServiceApplicationTests.testGetAllMovies" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="movieService" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fact.it.movieservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fact.it.movieservice" />
+      <option name="MAIN_CLASS_NAME" value="fact.it.movieservice.MovieServiceApplicationTests" />
+      <option name="METHOD_NAME" value="testGetAllMovies" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MovieServiceApplicationTests.testGetAllMoviesByCodeId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="movieService" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="fact.it.movieservice.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="fact.it.movieservice" />
+      <option name="MAIN_CLASS_NAME" value="fact.it.movieservice.MovieServiceApplicationTests" />
+      <option name="METHOD_NAME" value="testGetAllMoviesByCodeId" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MovieServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="movieService" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="fact.it.movieservice.MovieServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.MovieServiceApplicationTests.testGetAllMoviesByCodeId" />
+        <item itemvalue="JUnit.MovieServiceApplicationTests.testGetAllMovies" />
+        <item itemvalue="JUnit.MovieServiceApplicationTests.testCreateMovie" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ce0861a8-5dfe-4ff5-97dc-1450c2fc3a7c" name="Changes" comment="" />
+      <created>1731940754128</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1731940754128</updated>
+      <workItem from="1731940755141" duration="111000" />
+      <workItem from="1731940878588" duration="916000" />
+      <workItem from="1731941893101" duration="774000" />
+      <workItem from="1732541980492" duration="1432000" />
+      <workItem from="1732543946415" duration="13000" />
+      <workItem from="1732544639793" duration="61000" />
+      <workItem from="1733146563242" duration="304000" />
+      <workItem from="1733153082218" duration="40000" />
+      <workItem from="1733434568857" duration="599000" />
+      <workItem from="1733751624118" duration="2252000" />
+      <workItem from="1733754084751" duration="10000" />
+    </task>
+    <task id="LOCAL-00001" summary="added a dockerfile for the movie service">
+      <option name="closed" value="true" />
+      <created>1733146853768</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1733146853768</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Created tests for the movie service functions. Also removed anything related to playsincinema as it is not being used.">
+      <option name="closed" value="true" />
+      <created>1733753862984</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1733753862984</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added a dockerfile for the movie service" />
+    <MESSAGE value="Created tests for the movie service functions. Also removed anything related to playsincinema as it is not being used." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created tests for the movie service functions. Also removed anything related to playsincinema as it is not being used." />
+  </component>
+</project>
