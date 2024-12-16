@@ -1,5 +1,6 @@
 package fact.it.visitorservice;
 
+import fact.it.visitorservice.dto.VisitorRequest;
 import fact.it.visitorservice.dto.VisitorResponse;
 import fact.it.visitorservice.model.Visitor;
 import fact.it.visitorservice.repository.VisitorRepository;
@@ -10,6 +11,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -68,5 +70,18 @@ public class VisitorServiceApplicationTests {
         assertEquals("Lo0476", visitors.get(0).getCodeId());
 
         verify(visitorRepository, times(1)).findByCodeIdIn(visitor.getCodeId());
+    }
+
+    @Test
+    public void testAddVisitor() {
+        VisitorRequest visitor = new VisitorRequest();
+        visitor.setCodeId("je04");
+        visitor.setEmail("jefke@hotmail.com");
+        visitor.setName("Jef");
+        visitor.setPhone("0478954875");
+
+        visitorService.createVisitor(visitor);
+
+        verify(visitorRepository, times(1)).save(any(Visitor.class));
     }
 }
