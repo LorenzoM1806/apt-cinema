@@ -18,7 +18,7 @@ public class VisitorService {
         List<Visitor> visitors = visitorRepository.findAll();
         return visitors.stream().map(this::mapToVisitorResponse).toList();
     }
-    public List<VisitorResponse> getAllVisitorsByCodeId(List<String> codeId) {
+    public List<VisitorResponse> getAllVisitorsByCodeId(String codeId) {
         List<Visitor> visitors = visitorRepository.findByCodeIdIn(codeId);
         return visitors.stream().map(this::mapToVisitorResponse).toList();
     }

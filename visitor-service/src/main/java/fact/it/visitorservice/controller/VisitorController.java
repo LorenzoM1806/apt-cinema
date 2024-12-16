@@ -20,10 +20,10 @@ public class VisitorController {
     @ResponseStatus(HttpStatus.OK)
     public List<VisitorResponse> getAllVisitors() { return visitorService.getAllVisitors();}
 
-    @GetMapping
+    @GetMapping()
     @ResponseStatus(HttpStatus.OK)
     public List<VisitorResponse> getAllVisitorsByCodeId
-            (@RequestParam List<String> codeId) {
+            (String codeId) {
         return visitorService.getAllVisitorsByCodeId(codeId);
     }
 

@@ -56,9 +56,9 @@ public class VisitorServiceApplicationTests {
         visitor.setEmail("r0885689@student.thomasmore.be");
         visitor.setCodeId("Lo0476");
 
-        when(visitorRepository.findByCodeIdIn(Arrays.asList("Lo0476"))).thenReturn(Arrays.asList(visitor));
+        when(visitorRepository.findByCodeIdIn("Lo0476")).thenReturn(Arrays.asList(visitor));
 
-        List<VisitorResponse> visitors = visitorService.getAllVisitorsByCodeId(Arrays.asList("Lo0476"));
+        List<VisitorResponse> visitors = visitorService.getAllVisitorsByCodeId("Lo0476");
 
         assertEquals(1, visitors.size());
         assertEquals("1", visitors.get(0).getId());
@@ -67,6 +67,6 @@ public class VisitorServiceApplicationTests {
         assertEquals("r0885689@student.thomasmore.be", visitors.get(0).getEmail());
         assertEquals("Lo0476", visitors.get(0).getCodeId());
 
-        verify(visitorRepository, times(1)).findByCodeIdIn(Arrays.asList(visitor.getCodeId()));
+        verify(visitorRepository, times(1)).findByCodeIdIn(visitor.getCodeId());
     }
 }
