@@ -54,15 +54,24 @@ public class ReservationService {
                 return true;
         }
 
-        public void deleteReservation(ReservationRequest reservationRequest){
-                List<String> reservationCodeIds = new ArrayList<>();
-                reservationCodeIds.add(reservationRequest.getReservationItemDtoList().stream().map(r -> r.getCodeId()).toString());
-                if(reservationRepository.findByCodeIdIn(reservationCodeIds).stream().findFirst().isPresent()) {
-                        Reservation reservation = reservationRepository.findByCodeIdIn(reservationCodeIds).stream().findFirst().get();
-                        reservationRepository.delete(reservation);
-                }
+        public void deleteReservation(ReservationRequest reservationRequest) {
+                // Extract the codeIds of ReservationItems
+                List<String> reservationItemCodeIds = reservationRequest.getReservationItemDtoList()
+                        .stream()
+                        .map(ReservationItemDto::getCodeId)
+                        .collect(Collectors.toList());
 
+                // Fetch Reservations that contain the specified ReservationItem codeIds
+                List<Reservation> reservations = reservationRepository.findByReservationItemCodeIds(reservationItemCodeIds);
+
+                if (!reservations.isEmpty()) {
+                        reservationRepository.deleteAll(reservations);
+                        System.out.println("Reservations deleted successfully.");
+                } else {
+                        System.out.println("No reservations found with the provided ReservationItem codeIds.");
+                }
         }
+
         public List<ReservationResponse> getAllReservations() {
                 List<Reservation> reservations = reservationRepository.findAll();
 
